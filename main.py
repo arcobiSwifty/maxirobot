@@ -206,8 +206,14 @@ def submitChallenge(bot, update):
 		return
 
 	txt = update.message.text 
-	if text is '/challenge':
+	if txt is '/challenge':
 		bot.send_message(chatid(update), 'make sure to include your challenge idea')
+		return
+	try:
+		x = txt[10:]
+	except:
+		bot.send_message(chatid(update), 'make sure to include your challenge idea')
+		return
 
 	bot.send_message(MAIN_ADMIN, 'YOU GOT A CHALLENGE IDEA!\nsender: @{0}\nidea:{1}'.format(update.message.from_user.username, txt[1:]))
 	bot.send_message(SECONDARY_SHITTY_ADMIN, 'YOU GOT A CHALLENGE IDEA!\nsender: @{0}\nidea:{1}'.format(update.message.from_user.username, txt[1:]))
